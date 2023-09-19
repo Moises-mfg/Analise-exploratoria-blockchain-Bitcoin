@@ -1,0 +1,6 @@
+python-bitcoinrpc-1.0
+seaborn==0.8.2
+pandas==2.1.0
+matplotlib==3.8.0
+numpy==1.26.0
+line_profiler==4.1.1
