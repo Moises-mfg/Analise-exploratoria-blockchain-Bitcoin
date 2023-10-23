@@ -82,9 +82,13 @@ dict_col_names["maxfee_btc"] = {"log":True, "ylabel":"BTC"}
 dict_col_names["minfee_btc"] = {"log":True, "ylabel":"BTC"}
 dict_col_names["subsidy_btc"] = {"log":True, "ylabel":"BTC"}
 dict_col_names["blockhash_decimal"] = {"log":True, "ylabel":None}
+dict_col_names["avgfee_USD"] = {"log":True, "ylabel":"USD"}
+dict_col_names["maxfee_USD"] = {"log":True, "ylabel":"USD"}
+dict_col_names["minfee_USD"] = {"log":True, "ylabel":"USD"}
 
 
-list_fee_names = ["avgfee", "avgfeerate", "maxfee", "maxfeerate", "medianfee", "minfee", "minfeerate", "totalfee"]
+
+list_fee_names = ["avgfee", "avgfeerate", "maxfee", "maxfeerate", "medianfee", "minfee", "minfeerate", "totalfee", "avgfee_USD", "maxfee_USD", "minfee_USD", "avgfee_btc", "maxfee_btc", "minfee_btc"]
 list_size_names = ["avgtxsize", "maxtxsize", "mediantxsize", "mintxsize", "swtotal_size", "swtotal_weight", "total_size", "total_weight"]
 list_count_names = ["ins", "outs", "swtxs", "txs", "utxo_increase", "utxo_size_inc", "utxo_size_inc_actual"]
 list_time_names = ["time", "mediantime"]
@@ -98,11 +102,12 @@ list_other_names = ["feerate_percentiles"]
 
 left_column.markdown("## Fees")
 
+
 #plot the fees in scatterplot
-option_type_of_features = left_column.selectbox(
+option_type_of_features = st.sidebar.selectbox(
     "Which type of feature do you want to see?",
     ["Fees", "Size", "Count", "Time", "Subsidy", "Block", "Other"]
-)
+) 
 
 if option_type_of_features == "Fees":
     list_features = list_fee_names
@@ -141,6 +146,11 @@ ccf_lags_values = sm.tsa.stattools.ccf(btc_price_data["Close"],df_blockstats_dai
 
 left_column.bar_chart(ccf_lags_values)
 
+right_column.write(" ")
+right_column.write(" ")
+right_column.write(" ")
+right_column.write(" ")
+right_column.write(" ")
 right_column.write(f"Cross Correlation Function (lags in {option_column})")
 #plot the cross correlation between fees and price 
 
